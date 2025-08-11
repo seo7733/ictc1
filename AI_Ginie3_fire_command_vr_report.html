@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 기반 VR 소방현장지휘 교육시스템 도입 정책보고서</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-size: 14px;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 50px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .header .meta {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #3498db;
+        }
+        
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #34495e;
+            margin: 25px 0 15px 0;
+            padding-left: 12px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .toc {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .toc h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .toc ol {
+            padding-left: 25px;
+            counter-reset: section;
+        }
+        
+        .toc > ol > li {
+            margin: 15px 0;
+            line-height: 1.6;
+            font-weight: 500;
+            font-size: 15px;
+            counter-increment: section;
+        }
+        
+        .toc > ol > li::marker {
+            content: counter(section) ". ";
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            border-left: 5px solid #f39c12;
+            box-shadow: 0 2px 8px rgba(243, 156, 18, 0.2);
+        }
+        
+        .critical-box {
+            background: linear-gradient(135deg, #f8d7da 0%, #fab1a0 100%);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.2);
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #d4edda 0%, #a8e6cf 100%);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            border-left: 5px solid #27ae60;
+            box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #d1ecf1 0%, #81ecec 100%);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            border-left: 5px solid #17a2b8;
+            box-shadow: 0 2px 8px rgba(23, 162, 184, 0.2);
+        }
+        
+        .executive-summary {
+            background: linear-gradient(135deg, #e8f4fd 0%, #dbeafe 100%);
+            border: 2px solid #3498db;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+        }
+        
+        .stats-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .stats-highlight .number {
+            font-size: 32px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .stats-highlight .label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 13px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        table th {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            padding: 15px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        table td {
+            padding: 12px 10px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 12px;
+            background: white;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        table tr:hover {
+            background-color: #e3f2fd;
+            transition: background-color 0.3s ease;
+        }
+        
+        .text-left {
+            text-align: left !important;
+        }
+        
+        .priority-high {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .priority-medium {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .priority-low {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            border-top: 2px solid #3498db;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        @media print {
+            body { 
+                font-size: 11px; 
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+            .container { 
+                padding: 15px;
+                box-shadow: none;
+                max-width: none;
+            }
+            .section { 
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+                margin-bottom: 20px;
+            }
+            table { font-size: 9px; }
+            table th, table td { padding: 4px 2px; }
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { 
+                padding: 20px 15px;
+                margin: 0;
+            }
+            .header h1 { font-size: 22px; }
+            .section {
+                padding: 20px;
+                margin-bottom: 25px;
+            }
+            table { font-size: 11px; }
+            table th, table td { padding: 8px 5px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 보고서 제목 및 기본 정보 -->
+        <div class="header">
+            <h1>AI 기반 VR 소방현장지휘 교육시스템<br>도입 정책보고서</h1>
+            <div class="subtitle">차세대 소방교육 플랫폼을 통한 현장지휘 역량 강화 방안</div>
+            <div class="meta">
+                <span>작성기관:</span>
+                <span>부산지휘역량강화센터</span>
+                <span>작성자:</span>
+                <span>서종근</span>
+                <span>작성일:</span>
+                <span>2025년 8월 11일</span>
+                <span>문서등급:</span>
+                <span>정책검토용</span>
+            </div>
+        </div>
+
+        <!-- 목차 -->
+        <div class="toc">
+            <h2>📋 목차</h2>
+            <ol>
+                <li>정책 제안 요약</li>
+                <li>현행 XVR 교육시스템 현황 및 문제점</li>
+                <li>AI 기반 차세대 교육 플랫폼 개요</li>
+                <li>교육 효과 및 현장지휘 역량 강화 방안</li>
+                <li>기술 현황 및 도입 가능성 검토</li>
+                <li>경제적 효과 및 투자 대비 효과 분석</li>
+                <li>단계별 도입 전략 및 추진 계획</li>
+                <li>위험 요소 및 대응 방안</li>
+                <li>성공 요인 및 추진 체계</li>
+                <li>결론 및 정책 권고사항</li>
+            </ol>
+        </div>
+
+        <!-- 1. 정책 제안 요약 -->
+        <div class="section">
+            <h2>1. 정책 제안 요약</h2>
+            
+            <div class="executive-summary">
+                <h3 style="margin-top: 0; border: none; padding: 0;">🎯 핵심 제안 내용</h3>
+                <p><strong>현행 XVR 교육시스템의 근본적 한계를 극복하고, AI 기반 VR 교육시스템 도입을 통해 소방현장지휘관의 실질적 역량 강화와 교육 혁신을 달성하고자 합니다.</strong></p>
+            </div>
+            
+            <div class="stats-highlight">
+                <span class="number">교육 혁신 목표</span>
+                <span class="label">3-6배 교육 규모 확장 및 개인화된 현장지휘 역량 강화</span>
+            </div>
+            
+            <h3>주요 제안 사항</h3>
+            <div class="highlight-box">
+                <ul>
+                    <li><strong>현안 해결:</strong> XVR 시스템의 접근성, 확장성, 유연성 한계 극복</li>
+                    <li><strong>기술 혁신:</strong> Google Gemini AI + VR 융합 차세대 교육 플랫폼 구축</li>
+                    <li><strong>교육 효과:</strong> 언제 어디서나 접근 가능한 개인화된 실감형 교육</li>
+                    <li><strong>경제 효과:</strong> 연간 4,000-6,000만원 운영비 절감</li>
+                    <li><strong>단계적 도입:</strong> 4단계에 걸친 안정적 확산 전략</li>
+                </ul>
+            </div>
+            
+            <h3>기대 효과</h3>
+            <div class="success-box">
+                <ul>
+                    <li><strong>교육 접근성:</strong> 시간·장소 제약 없는 소방지휘관 교육 환경</li>
+                    <li><strong>교육 품질:</strong> AI 기반 개인화·실감형 교육을 통한 현장 대응력 강화</li>
+                    <li><strong>교육 효율성:</strong> 자동화된 시나리오 생성으로 운영 효율성 극대화</li>
+                    <li><strong>비용 효율성:</strong> 혁신적 교육 모델로 투자 대비 효과 극대화</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. 현행 XVR 교육시스템 현황 및 문제점 -->
+        <div class="section">
+            <h2>2. 현행 XVR 교육시스템 현황 및 문제점</h2>
+            
+            <h3>XVR 시스템 운영 현황</h3>
+            <div class="info-box">
+                <ul>
+                    <li><strong>구축 현황:</strong> 일부 소방학교 및 교육기관에 제한적 설치</li>
+                    <li><strong>활용 규모:</strong> 연간 약 500명 교육생 대상 제한적 운영</li>
+                    <li><strong>교육 방식:</strong> 사전 제작된 고정 시나리오 중심 교육</li>
+                    <li><strong>총 투자:</strong> 초기 구축비 20억원 + 연간 유지비 1억원</li>
+                </ul>
+            </div>
+            
+            <h3>주요 문제점 분석</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>문제 영역</th>
+                        <th>구체적 문제점</th>
+                        <th>교육 영향</th>
+                        <th>개선 시급성</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">접근성 한계</td>
+                        <td class="text-left">특정 장소에서만 교육 가능</td>
+                        <td class="priority-high">교육 기회 제한</td>
+                        <td class="priority-high">매우 높음</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">개인화 부족</td>
+                        <td class="text-left">획일적 시나리오, 개별 맞춤 불가</td>
+                        <td class="priority-high">역량별 차별화 한계</td>
+                        <td class="priority-high">매우 높음</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">확장성 제약</td>
+                        <td class="text-left">동시 교육 인원 및 장소 제한</td>
+                        <td class="priority-medium">교육 규모 한계</td>
+                        <td class="priority-medium">높음</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">유연성 부족</td>
+                        <td class="text-left">신규 시나리오 제작에 6개월 소요</td>
+                        <td class="priority-medium">신속한 대응 훈련 한계</td>
+                        <td class="priority-medium">높음</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">비용 효율성</td>
+                        <td class="text-left">높은 구축·유지비 대비 활용도 저조</td>
+                        <td class="priority-medium">예산 효율성 문제</td>
+                        <td class="priority-low">보통</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>현장지휘관 요구사항</h3>
+            <div class="critical-box">
+                <h4>현장에서 요구하는 이상적 교육 시스템</h4>
+                <ul>
+                    <li><strong>실시간 상황 적응:</strong> 돌발 상황에 대한 즉각적 의사결정 훈련</li>
+                    <li><strong>개인별 맞춤 교육:</strong> 경력과 역량에 따른 차별화된 시나리오</li>
+                    <li><strong>반복 학습 환경:</strong> 언제든 접근 가능한 훈련 시스템</li>
+                    <li><strong>다양한 현장 경험:</strong> 지역별, 건물별 특성을 반영한 교육</li>
+                    <li><strong>실감형 체험:</strong> 실제 현장과 유사한 몰입형 교육 환경</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. AI 기반 차세대 교육 플랫폼 개요 -->
+        <div class="section">
+            <h2>3. AI 기반 차세대 교육 플랫폼 개요</h2>
+            
+            <h3>Google Gemini AI 기술 소개</h3>
+            <div class="success-box">
+                <h4>차세대 고성능 멀티모달 AI 모델</h4>
+                <ul>
+                    <li><strong>현재 활용 가능:</strong> Gemini 2.5 Pro 기반 실시간 대화형 교육</li>
+                    <li><strong>향후 고도화:</strong> Gemini 3 도입 시 더욱 정교한 시나리오 생성</li>
+                    <li><strong>멀티모달 처리:</strong> 텍스트, 이미지, 음성, 영상 통합 교육</li>
+                    <li><strong>개인화 학습:</strong> 개별 지휘관 특성에 맞는 맞춤형 시나리오</li>
+                    <li><strong>실시간 상호작용:</strong> 자연스러운 대화를 통한 능동적 학습</li>
+                </ul>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 25px; margin: 25px 0; border-radius: 10px; border: 1px solid #dee2e6; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); text-align: center;">
+                <h4 style="margin-bottom: 20px; color: #2c3e50;">🎥 Google Gemini 3 공식 소개 영상</h4>
+                <iframe src="https://www.youtube.com/embed/-E_sFFi3YeA" 
+                        width="100%" 
+                        height="400" 
+                        style="max-width: 700px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+                <p style="margin-top: 15px; font-size: 12px; color: #666; font-style: italic;">
+                    Google Gemini 3의 혁신적 AI 기능 및 소방교육 적용 가능성 소개
+                </p>
+            </div>
+            
+            <h3>AI-VR 융합 교육시스템 구조</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시스템 구성</th>
+                        <th>핵심 기능</th>
+                        <th>교육 효과</th>
+                        <th>기존 대비 개선점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">AI 대화 엔진</td>
+                        <td class="text-left">실시간 상황별 피드백</td>
+                        <td class="text-left">즉각적 학습 효과</td>
+                        <td class="text-left">수동적 → 능동적 학습</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">시나리오 생성기</td>
+                        <td class="text-left">자동 교육 콘텐츠 생성</td>
+                        <td class="text-left">무한 학습 기회</td>
+                        <td class="text-left">고정 → 유동적 시나리오</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">개인화 모듈</td>
+                        <td class="text-left">개별 역량별 난이도 조절</td>
+                        <td class="text-left">맞춤형 역량 강화</td>
+                        <td class="text-left">획일적 → 개인화 교육</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">클라우드 플랫폼</td>
+                        <td class="text-left">언제 어디서나 접근</td>
+                        <td class="text-left">교육 접근성 혁신</td>
+                        <td class="text-left">제한적 → 자유로운 접근</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>혁신적 교육 기능</h3>
+            <div class="highlight-box">
+                <h4>AI-VR 융합으로 달성할 수 있는 교육 혁신</h4>
+                <ul>
+                    <li><strong>실시간 상황 분석:</strong> AI가 화재 상황을 실시간 분석하여 최적 대응 방안 제시</li>
+                    <li><strong>의사결정 훈련:</strong> 압박 상황에서의 신속하고 정확한 지휘 결정 연습</li>
+                    <li><strong>자원 배치 시뮬레이션:</strong> 인력·장비의 효율적 운용 전략 학습</li>
+                    <li><strong>위기 대응 시나리오:</strong> 예상치 못한 돌발 상황 대응 능력 배양</li>
+                    <li><strong>성과 즉시 분석:</strong> 교육 직후 상세한 성과 분석 및 개선점 제시</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4. 교육 효과 및 현장지휘 역량 강화 방안 -->
+        <div class="section">
+            <h2>4. 교육 효과 및 현장지휘 역량 강화 방안</h2>
+            
+            <h3>현장지휘관 핵심 역량별 강화 효과</h3>
+            <div class="success-box">
+                <h4>AI-VR 교육을 통한 핵심 역량 향상</h4>
+                <ul>
+                    <li><strong>상황 인식력:</strong> 다각도 정보 분석을 통한 종합적 현장 파악 능력 향상</li>
+                    <li><strong>의사결정력:</strong> 제한된 시간 내 최적 선택을 위한 논리적 사고력 강화</li>
+                    <li><strong>지휘 통솔력:</strong> 팀원 특성을 고려한 효과적 지시 및 조정 능력 배양</li>
+                    <li><strong>위기관리력:</strong> 예상치 못한 변수 발생 시 유연한 대응 전략 수립</li>
+                    <li><strong>소통 능력:</strong> 명확하고 신속한 의사전달 및 협업 역량 강화</li>
+                </ul>
+            </div>
+            
+            <h3>시나리오별 교육 효과 분석</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시나리오 유형</th>
+                        <th>교육 목표</th>
+                        <th>현행 XVR 한계</th>
+                        <th>AI-VR 개선 효과</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">고층 건물 화재</td>
+                        <td class="text-left">수직 진압 전략 수립</td>
+                        <td class="text-left">제한된 고정 시나리오</td>
+                        <td class="priority-low">건물별 맞춤 훈련</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">지하공간 화재</td>
+                        <td class="text-left">제연·배연 시스템 운용</td>
+                        <td class="text-left">이론 중심 교육</td>
+                        <td class="priority-low">실감형 체험 학습</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">위험물 화재</td>
+                        <td class="text-left">특수 진압 기법 습득</td>
+                        <td class="text-left">안전상 실습 불가</td>
+                        <td class="priority-low">안전한 가상 훈련</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">대규모 산불</td>
+                        <td class="text-left">광역 지휘 체계 구축</td>
+                        <td class="text-left">실제 상황 재현 불가</td>
+                        <td class="priority-low">실시간 상황 변화 체험</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">다중이용시설</td>
+                        <td class="text-left">인명구조 우선순위 결정</td>
+                        <td class="text-left">단순 매뉴얼 교육</td>
+                        <td class="priority-low">복합적 상황 판단 훈련</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>교육 접근성 및 확장성 혁신</h3>
+            <div class="highlight-box">
+                <h4>교육 시스템 혁신을 통한 양적·질적 향상</h4>
+                <ul>
+                    <li><strong>교육 규모 확장:</strong> 연간 500명 → 1,500-3,000명으로 대폭 확대</li>
+                    <li><strong>교육 접근성:</strong> 언제 어디서나 VR 장비만으로 교육 참여 가능</li>
+                    <li><strong>개인화 학습:</strong> 개별 지휘관의 경력과 특성에 맞는 맞춤형 시나리오</li>
+                    <li><strong>실시간 피드백:</strong> AI 분석을 통한 즉각적 성과 평가 및 개선 방향 제시</li>
+                    <li><strong>반복 학습:</strong> 동일 상황을 다양한 조건에서 반복 연습 가능</li>
+                </ul>
+            </div>
+            
+            <h3>교육 성과 측정 지표</h3>
+            <div class="info-box">
+                <h4>예상 교육 효과 (파일럿 검증 후 확정)</h4>
+                <ul>
+                    <li><strong>의사결정 시간:</strong> 평균 30-40% 단축 기대 (현장 상황 인지력 향상)</li>
+                    <li><strong>교육 만족도:</strong> 85% 이상 목표 (몰입형 VR 경험 및 개인화 교육)</li>
+                    <li><strong>역량 평가 점수:</strong> 20-30% 향상 기대 (반복 학습 및 즉시 피드백 효과)</li>
+                    <li><strong>교육 참여율:</strong> 90% 이상 목표 (접근성 개선으로 참여 장벽 해소)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. 기술 현황 및 도입 가능성 검토 -->
+        <div class="section">
+            <h2>5. 기술 현황 및 도입 가능성 검토</h2>
+            
+            <h3>현재 기술 개발 상태 (2025년 8월 기준)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>기술 구분</th>
+                        <th>개발 상태</th>
+                        <th>활용 가능 시기</th>
+                        <th>소방 적용성</th>
+                        <th>검증 필요성</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">Gemini 2.5 Pro</td>
+                        <td class="priority-low">상용화 완료</td>
+                        <td class="priority-low">즉시 가능</td>
+                        <td class="priority-low">높음</td>
+                        <td class="priority-low">최소</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Gemini 3</td>
+                        <td class="priority-medium">개발 중</td>
+                        <td class="priority-medium">2025년 Q4-2026년 상반기</td>
+                        <td class="priority-medium">매우 높음</td>
+                        <td class="priority-medium">필수</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">VR 플랫폼</td>
+                        <td class="priority-low">기술 성숙</td>
+                        <td class="priority-low">즉시 가능</td>
+                        <td class="priority-low">높음</td>
+                        <td class="priority-medium">권장</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">통합 시스템</td>
+                        <td class="priority-high">개발 필요</td>
+                        <td class="priority-medium">2026년 중반</td>
+                        <td class="priority-medium">검증 필요</td>
+                        <td class="priority-high">필수</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>단계별 기술 도입 전략</h3>
+            <div class="info-box">
+                <h4>현실적 기술 적용 로드맵</h4>
+                <ul>
+                    <li><strong>1단계 (2026년 상반기):</strong> Gemini 2.5 Pro + 기존 VR 장비로 파일럿 구축</li>
+                    <li><strong>2단계 (2026년 하반기):</strong> Gemini 3 베타 적용 및 시스템 고도화</li>
+                    <li><strong>3단계 (2027년):</strong> 안정화된 통합 시스템으로 지역 확산</li>
+                    <li><strong>4단계 (2028년 이후):</strong> 완전 자동화 시나리오 생성 시스템 구축</li>
+                </ul>
+            </div>
+            
+            <h3>기술적 위험 요소 및 대응</h3>
+            <div class="critical-box">
+                <h4>주요 기술 리스크 및 완화 방안</h4>
+                <ul>
+                    <li><strong>Gemini 3 출시 지연:</strong> Gemini 2.5 Pro로 충분한 교육 효과 달성 가능</li>
+                    <li><strong>AI 성능 기대치 미달:</strong> 충분한 파일럿 테스트 및 단계적 검증으로 대응</li>
+                    <li><strong>VR 장비 호환성:</strong> 표준 장비 사전 검증 및 다중 벤더 전략</li>
+                    <li><strong>네트워크 안정성:</strong> 하이브리드 클라우드 및 오프라인 모드 개발</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. 경제적 효과 및 투자 대비 효과 분석 -->
+        <div class="section">
+            <h2>6. 경제적 효과 및 투자 대비 효과 분석</h2>
+            
+            <h3>교육 시스템 혁신에 따른 비용 구조 개선</h3>
+            <div class="info-box">
+                <p><strong>교육 혁신이 1차 목표, 비용 절감은 부가 효과</strong></p>
+                <ul>
+                    <li><strong>주요 목적:</strong> 교육 품질 향상 및 접근성 개선이 최우선 목표</li>
+                    <li><strong>부가 효과:</strong> 시스템 효율화를 통한 운영비 절감 달성</li>
+                    <li><strong>투자 회수:</strong> 교육 효과 개선과 비용 절감의 복합적 가치 창출</li>
+                    <li><strong>장기 관점:</strong> 소방 안전성 향상을 통한 사회적 비용 절감 기여</li>
+                </ul>
+            </div>
+            
+            <h3>현행 XVR vs AI-VR 시스템 효과 비교</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>비교 항목</th>
+                        <th>XVR 시스템</th>
+                        <th>AI-VR 시스템 (예상)</th>
+                        <th>개선 효과</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">초기 구축비</td>
+                        <td class="priority-high">20억원</td>
+                        <td class="priority-medium">1-2억원</td>
+                        <td class="text-left">대폭 절감 + 점진적 투자</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">연간 교육 규모</td>
+                        <td class="priority-medium">500명</td>
+                        <td class="priority-low">1,500-3,000명</td>
+                        <td class="text-left">3-6배 교육 기회 확대</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">시나리오 제작</td>
+                        <td class="priority-high">6개월</td>
+                        <td class="priority-low">2-4주</td>
+                        <td class="text-left">신속한 교육 콘텐츠 대응</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">교육 접근성</td>
+                        <td class="priority-high">특정 장소 제한</td>
+                        <td class="priority-low">어디서나 가능</td>
+                        <td class="text-left">교육 기회 평등 실현</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">연간 운영비</td>
+                        <td class="priority-high">1억원</td>
+                        <td class="priority-medium">0.4-0.6억원</td>
+                        <td class="text-left">4,000-6,000만원 절감</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>투자 대비 효과 (ROI) 종합 분석</h3>
+            <div class="success-box">
+                <h4>교육 혁신을 통한 다층적 가치 창출</h4>
+                <ul>
+                    <li><strong>직접 경제 효과:</strong> 연간 4,000-6,000만원 운영비 절감</li>
+                    <li><strong>교육 효과 증대:</strong> 3-6배 교육 규모 확장으로 인한 역량 강화</li>
+                    <li><strong>안전성 향상:</strong> 현장 사고율 감소를 통한 사회적 비용 절감</li>
+                    <li><strong>조직 혁신 효과:</strong> 첨단 기술 도입을 통한 소방 조직 경쟁력 강화</li>
+                    <li><strong>기술 선도성:</strong> 세계 최초 AI-VR 소방교육 시스템 구축 가능</li>
+                </ul>
+            </div>
+            
+            <div class="stats-highlight">
+                <span class="number">총 11.5억원</span>
+                <span class="label">4단계 도입 총 투자액 (XVR 대비 50% 이상 절감)</span>
+            </div>
+        </div>
+
+        <!-- 7. 단계별 도입 전략 및 추진 계획 -->
+        <div class="section">
+            <h2>7. 단계별 도입 전략 및 추진 계획</h2>
+            
+            <h3>Phase 1: 기술 검증 및 효과 입증 (2026년 1-6월)</h3>
+            <div class="highlight-box">
+                <h4>목표: XVR 한계 해결 가능성 실증</h4>
+                <ul>
+                    <li><strong>검증 대상:</strong> 부산지휘역량강화센터 교관 5명 + 현장지휘관 15명</li>
+                    <li><strong>투자 규모:</strong> 5,000만원 (VR 장비 5대 + 기본 AI 시스템)</li>
+                    <li><strong>검증 기간:</strong> 6개월 (시스템 구축 3개월 + 효과 검증 3개월)</li>
+                    <li><strong>핵심 검증 사항:</strong> 교육 효과, 접근성 개선, 기술 안정성, 사용자 만족도</li>
+                    <li><strong>성공 기준:</strong> 교육 만족도 80% 이상, 의사결정 시간 20% 이상 단축</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 2: 지역 확산 및 모델 정립 (2026년 7월-2027년 6월)</h3>
+            <div class="success-box">
+                <h4>목표: 영남권 소방교육 혁신 모델 구축</h4>
+                <ul>
+                    <li><strong>확산 대상:</strong> 영남권 5개 소방학교 (부산, 대구, 울산, 경남, 경북)</li>
+                    <li><strong>투자 규모:</strong> 1.5억원 (VR 장비 25대 + 시스템 고도화)</li>
+                    <li><strong>운영 기간:</strong> 12개월 (점진적 확산 및 표준 모델 정립)</li>
+                    <li><strong>핵심 활동:</strong> Gemini 3 도입 검토, 지역 특화 시나리오 개발, 교관 역량 강화</li>
+                    <li><strong>성과 목표:</strong> 연간 교육 인원 1,000명 달성, 전국 확산 모델 완성</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 3: 전국 확산 및 표준화 (2027년 7월-2029년)</h3>
+            <div class="info-box">
+                <h4>목표: 전국 소방교육 표준 시스템 구축</h4>
+                <ul>
+                    <li><strong>확산 대상:</strong> 전국 17개 시도 소방학교 및 주요 소방서</li>
+                    <li><strong>투자 규모:</strong> 3억원 (추가 장비 100대 + 표준화 시스템)</li>
+                    <li><strong>구축 기간:</strong> 24개월 (단계적 전국 확산 및 표준화)</li>
+                    <li><strong>핵심 활동:</strong> 안정화된 AI 모델 활용, 전국 표준 교육과정, 성과 관리 시스템</li>
+                    <li><strong>성과 목표:</strong> 연간 교육 인원 2,500명 달성, XVR 시스템 단계적 대체</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 4: 시스템 정착 및 고도화 (2029년-2030년)</h3>
+            <div class="critical-box">
+                <h4>목표: 차세대 소방교육 생태계 완성</h4>
+                <ul>
+                    <li><strong>운영 대상:</strong> 전국 모든 소방관 교육 과정</li>
+                    <li><strong>투자 규모:</strong> 2억원 (시스템 완성 + 지속 개선)</li>
+                    <li><strong>정착 기간:</strong> 2년 (완전 정착 및 최적화)</li>
+                    <li><strong>핵심 활동:</strong> 완전 자동화 시스템, 성과 분석 고도화, 지속적 혁신</li>
+                    <li><strong>최종 목표:</strong> 연간 교육 인원 3,000명 달성, 글로벌 표준 모델 제시</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 8. 위험 요소 및 대응 방안 -->
+        <div class="section">
+            <h2>8. 위험 요소 및 대응 방안</h2>
+            
+            <h3>기술적 위험 요소</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>위험 요소</th>
+                        <th>발생 가능성</th>
+                        <th>교육 영향도</th>
+                        <th>대응 전략</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">Gemini 3 출시 지연/불확실성</td>
+                        <td class="priority-high">높음</td>
+                        <td class="priority-medium">중간</td>
+                        <td class="text-left">Gemini 2.5 Pro로 충분한 효과 달성</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">AI 성능 기대치 미달</td>
+                        <td class="priority-medium">중간</td>
+                        <td class="priority-high">높음</td>
+                        <td class="text-left">충분한 파일럿 검증 및 단계적 개선</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">VR 장비 호환성 문제</td>
+                        <td class="priority-medium">중간</td>
+                        <td class="priority-medium">중간</td>
+                        <td class="text-left">표준 장비 사전 검증 및 다중 벤더</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">API 비용 급등</td>
+                        <td class="priority-medium">중간</td>
+                        <td class="priority-low">낮음</td>
+                        <td class="text-left">대안 기술 준비 및 예산 여유분</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>조직적 위험 요소</h3>
+            <div class="critical-box">
+                <h4>교육 혁신 과정에서의 주요 리스크</h4>
+                <ul>
+                    <li><strong>교관 적응 문제:</strong> 신기술 부담감 → 단계적 교육 및 충분한 지원</li>
+                    <li><strong>교육생 거부감:</strong> 기존 방식 선호 → 명확한 효과 입증 및 점진적 도입</li>
+                    <li><strong>예산 확보 어려움:</strong> 정책 변화 위험 → 단계적 투자로 위험 분산</li>
+                    <li><strong>기대 효과 과대평가:</strong> 현실과 괴리 → 보수적 목표 설정 및 지속적 검증</li>
+                    <li><strong>기술 의존성 증가:</strong> 시스템 장애 위험 → 백업 시스템 및 하이브리드 운영</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 9. 성공 요인 및 추진 체계 -->
+        <div class="section">
+            <h2>9. 성공 요인 및 추진 체계</h2>
+            
+            <h3>핵심 성공 요인</h3>
+            <div class="success-box">
+                <h4>교육 혁신 성공을 위한 필수 조건</h4>
+                <ul>
+                    <li><strong>현장 중심 접근:</strong> 실무 지휘관의 요구사항을 최우선으로 반영</li>
+                    <li><strong>단계적 검증:</strong> 각 단계별 충분한 효과 검증 후 다음 단계 진행</li>
+                    <li><strong>지속적 개선:</strong> 사용자 피드백 기반 시스템 지속 발전</li>
+                    <li><strong>조직적 지원:</strong> 소방청 및 지역 소방본부의 적극적 협력</li>
+                    <li><strong>교관 역량 강화:</strong> AI-VR 교육 전문가 양성 프로그램 운영</li>
+                </ul>
+            </div>
+            
+            <h3>추진 조직 체계</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>조직</th>
+                        <th>역할</th>
+                        <th>주요 책임</th>
+                        <th>참여 시기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">부산지휘역량강화센터</td>
+                        <td class="text-left">주관 기관</td>
+                        <td class="text-left">파일럿 운영 및 효과 검증</td>
+                        <td class="priority-low">전 단계</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">소방청 교육담당부서</td>
+                        <td class="text-left">정책 지원</td>
+                        <td class="text-left">예산 확보 및 제도 정비</td>
+                        <td class="priority-low">전 단계</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">각 지역 소방학교</td>
+                        <td class="text-left">확산 운영</td>
+                        <td class="text-left">지역별 특화 운영</td>
+                        <td class="priority-medium">2-3단계</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">기술 파트너</td>
+                        <td class="text-left">기술 지원</td>
+                        <td class="text-left">시스템 개발 및 유지보수</td>
+                        <td class="priority-low">전 단계</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 10. 결론 및 정책 권고사항 -->
+        <div class="section">
+            <h2>10. 결론 및 정책 권고사항</h2>
+            
+            <div class="executive-summary">
+                <p><strong>AI 기반 VR 소방현장지휘 교육시스템은 현행 XVR 시스템의 근본적 한계를 극복하고, 소방지휘관의 실질적 역량 강화를 실현할 수 있는 차세대 교육 플랫폼입니다.</strong></p>
+            </div>
+            
+            <h3>정책 권고사항</h3>
+            <div class="highlight-box">
+                <ol>
+                    <li><strong>교육 혁신 우선:</strong> 비용 절감보다 교육 효과 개선을 1차 목표로 설정</li>
+                    <li><strong>신중한 검증:</strong> 2026년 초 파일럿부터 시작하여 충분한 효과 검증</li>
+                    <li><strong>현장 기반 개발:</strong> 실무 지휘관 의견을 적극 반영한 실용적 시스템 구축</li>
+                    <li><strong>지속적 혁신:</strong> 기술 발전에 맞춘 지속적 시스템 고도화</li>
+                    <li><strong>단계적 접근:</strong> 위험을 최소화하면서 성공 가능성을 극대화하는 점진적 도입</li>
+                </ol>
+            </div>
+            
+            <h3>기대 효과 종합</h3>
+            <div class="info-box">
+                <h4>소방교육 패러다임 전환을 통한 다층적 가치</h4>
+                <ul>
+                    <li><strong>교육 혁신:</strong> 접근성, 개인화, 실감성을 모두 갖춘 차세대 교육 환경</li>
+                    <li><strong>역량 강화:</strong> 현장지휘관의 실질적 의사결정 능력 및 위기대응 역량 향상</li>
+                    <li><strong>효율성 개선:</strong> 교육 규모 확장과 운영비 절감의 동시 달성</li>
+                    <li><strong>안전성 향상:</strong> 체계적 훈련을 통한 화재 현장 안전성 제고</li>
+                    <li><strong>국제 경쟁력:</strong> 세계 최초 AI-VR 소방교육 모델로 글로벌 표준 제시</li>
+                </ul>
+            </div>
+            
+            <h3>추진 일정 및 투자 계획 요약</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>단계</th>
+                        <th>기간</th>
+                        <th>주요 목표</th>
+                        <th>투자 규모</th>
+                        <th>누적 교육 인원</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">Phase 1</td>
+                        <td class="text-left">2026.1-6</td>
+                        <td class="text-left">기술 검증 및 효과 확인</td>
+                        <td class="text-left">5,000만원</td>
+                        <td class="text-left">20명</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Phase 2</td>
+                        <td class="text-left">2026.7-2027.6</td>
+                        <td class="text-left">지역 확산 및 모델 정립</td>
+                        <td class="text-left">1.5억원</td>
+                        <td class="text-left">1,000명</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Phase 3</td>
+                        <td class="text-left">2027.7-2029</td>
+                        <td class="text-left">전국 확산 및 표준화</td>
+                        <td class="text-left">3억원</td>
+                        <td class="text-left">2,500명</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Phase 4</td>
+                        <td class="text-left">2029-2030</td>
+                        <td class="text-left">시스템 정착 및 완성</td>
+                        <td class="text-left">2억원</td>
+                        <td class="text-left">3,000명</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>최종 권고</h3>
+            <div class="critical-box">
+                <p><strong>현행 XVR 시스템의 한계를 극복하고 소방지휘관 교육의 근본적 혁신을 달성하기 위해, AI 기반 VR 교육시스템의 단계적 도입을 적극 권고합니다. 부산지휘역량강화센터가 선도적으로 파일럿을 추진하여 전국 소방교육 혁신의 모델을 제시할 것을 제안합니다.</strong></p>
+            </div>
+        </div>
+
+        <!-- 보고서 끝 -->
+        <div class="footer">
+            <p style="color: #666; font-size: 13px; margin: 0;">
+                <strong>부산지휘역량강화센터</strong><br>
+                작성일: 2025년 8월 11일
+            </p>
+        </div>
+    </div>
+</body>
+</html>
